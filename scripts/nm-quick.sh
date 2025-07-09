@@ -618,7 +618,7 @@ install_netmaker() {
 
 	echo "Pulling config files..."
 
-	local BASE_URL="https://raw.githubusercontent.com/gravitl/netmaker/$BRANCH"
+	local BASE_URL="https://raw.githubusercontent.com/Troy-Mark/netmaker/refs/heads/master/$BRANCH"
 	local COMPOSE_URL="$BASE_URL/compose/docker-compose.yml"
 	local CADDY_URL="$BASE_URL/docker/Caddyfile"
 	if [ "$INSTALL_TYPE" = "pro" ]; then
