@@ -377,10 +377,10 @@ install_dependencies() {
 		apt update
 		apt install -y ca-certificates curl
 		install -m 0755 -d /etc/apt/keyrings
-		curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+		curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 		chmod a+r /etc/apt/keyrings/docker.asc
 		echo \
-		  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+		  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://dmirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
 		  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 		  tee /etc/apt/sources.list.d/docker.list > /dev/null
 		apt update
@@ -388,19 +388,19 @@ install_dependencies() {
 		apt update
 		apt install -y ca-certificates curl
 		install -m 0755 -d /etc/apt/keyrings
-		curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+		curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 		chmod a+r /etc/apt/keyrings/docker.asc
 		echo \
-		  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+		  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.ustc.edu.cn/docker-ce/linux/debian \
 		  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 		  tee /etc/apt/sources.list.d/docker.list > /dev/null
 		apt update
 	elif [ -f /etc/fedora-release ]; then
 		dnf -y install dnf-plugins-core
-		dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+		dnf config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/fedora/docker-ce.repo
 	elif [ -f /etc/centos-release ]; then
 		yum install -y yum-utils
-		yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+		yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 		if [ "$(cat /etc/*-release |grep 'release 8' |wc -l)" -gt 0 ]; then
 			yum install -y elrepo-release epel-release
 		elif [ "$(cat /etc/*-release |grep 'release 7' |wc -l)" -gt 0 ]; then
@@ -409,7 +409,7 @@ install_dependencies() {
 		fi
 	elif [ -f /etc/redhat-release ]; then
 		yum install -y yum-utils
-		yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+		yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 		if [ "$(cat /etc/*-release |grep 'release 8' |wc -l)" -gt 0 ]; then
 			yum install -y elrepo-release epel-release
 		fi
