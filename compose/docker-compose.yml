@@ -3,7 +3,7 @@ version: "3.4"
 services:
 
   netmaker:
-    container_name: netmaker
+    container_name: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/gravitl/netmaker
     image: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/gravitl/netmaker:amd64-v1.0.0
     env_file: ./netmaker.env
     restart: always
@@ -27,7 +27,7 @@ services:
       - SERVER_HTTP_HOST=api.${NM_DOMAIN}
 
   netmaker-ui:
-    container_name: netmaker-ui
+    container_name: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/gravitl/netmaker-ui
     image: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/gravitl/netmaker-ui:amd64-v1.0.0
     env_file: ./netmaker.env
     environment:
@@ -41,8 +41,8 @@ services:
     restart: always
 
   caddy:
+    container_name: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/library/caddy
     image: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/library/caddy:amd64-2.8.4
-    container_name: caddy
     env_file: ./netmaker.env
     restart: unless-stopped
     extra_hosts:
@@ -57,7 +57,7 @@ services:
 
   coredns:
     #network_mode: host
-    container_name: coredns
+    container_name: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/coredns/coredns
     image: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/coredns/coredns:amd64-1.10.1
     command: -conf /root/dnsconfig/Corefile
     env_file: ./netmaker.env
@@ -67,7 +67,7 @@ services:
     volumes:
       - dnsconfig:/root/dnsconfig
   mq:
-    container_name: mq
+    container_name: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/library/eclipse-mosquitto
     image: swr.cn-north-4.myhuaweicloud.com/personal-docker-image-1/library/eclipse-mosquitto:amd64-2.0.15-openssl
     env_file: ./netmaker.env
     depends_on:
